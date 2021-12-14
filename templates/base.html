@@ -14,7 +14,12 @@
     {% endblock %}
 
     {% block corecss %}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
     {% block extra_css %}
@@ -32,7 +37,164 @@
     <title>Kingsland Design {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-      <header class="container-fluid fixed-top"></header>
+    <header id="topnav" class="container-fluid fixed-top">
+        <nav class="row bg-white pt-lg-2 d-none d-lg-flex">
+          <div class="col-2 my-auto py-1 py-lg-0">
+            <a href="{% url 'home' %}" class="nav-link main-logo-link">
+              <img class="nav-logo" src=""/>
+            </a>
+          </div>
+          <div class="col-10 my-auto py-1 py-lg-0">
+            <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+              {% if user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                  <li class="list-inline-item mr-3">
+                  <a href="" class="dropdown-item">Order Management</a>
+                  </li>
+                {% endif %}
+                  <li class="list-inline-item mr-3">
+                    <a href="{% url 'home' %}" class="nav-text">Home</a>
+                  </li>
+                  <li class="list-inline-item mr-3">
+                    <a href="" class="nav-text">Services</a>
+                  </li>
+                  <li class="list-inline-item mr-3">
+                    <a href="" class="nav-text">Case Studies</a>
+                  </li>
+                  <li class="list-inline-item mr-3">
+                    <a href="" class="nav-text">Profile</a>
+                  </li>
+                  <li class="list-inline-item mr-3">
+                    <a href="{% url 'account_logout' %}" class="nav-text">Sign Out</a>
+                  </li>
+                  <li class="list-inline-item mr-3">
+                    <a href="" class="nav-contact">Contact us</a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
+                        <div class="text-center">
+                            <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                            <p class="my-0">
+                                {% if grand_total %}
+                                    £{{ grand_total|floatformat:2 }}
+                                {% else %}
+                                    £0.00
+                                {% endif %}
+                            </p>
+                        </div>
+                    </a>
+                </li>
+              {% else %}
+                <li class="list-inline-item mr-3">
+                  <a href="{% url 'home' %}" class="nav-text">Home</a>
+                </li>
+                <li class="list-inline-item mr-2">
+                  <a href="" class="nav-text">Services</a>
+                </li>
+                <li class="list-inline-item mr-3">
+                  <a href="" class="nav-text">Case Studies</a>
+                </li>
+                <li class="list-inline-item mr-3">
+                  <a href="" class="nav-text">Profile</a>
+                </li>
+                  <li class="list-inline-item mr-3">
+                    <a href="{% url 'account_login' %}" class="nav-text">Sign In</a>
+                  </li>
+                  <li class="list-inline-item mr-3">
+                    <a href="{% url 'account_signup' %}" class="nav-text">Register</a>
+                  </li>
+                  <li class="list-inline-item mr-3">
+                    <a href="" class="nav-contact">Contact us</a>
+                  </li>
+              {% endif %}
+            </ul>
+          </div>
+
+        </nav>
+        
+        <!-- mobile nav section -->
+
+        <div class="container-fluid bg-white">
+          <nav class="col-12 navbar navbar-expand-lg fixed-nav navbar-light bg-white mobile-top">
+            <div class="col-5 my-auto py-1 py-lg-0">
+              <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                <img class="nav-logo" src=""/>
+              </a>
+            </div>
+            <div class="col-7 my-auto py-1 py-lg-0 text-right">
+              <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>  
+            <div class="collapse navbar-collapse bg-white" id="navbarNavDropdown">
+              <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                {% if user.is_authenticated %}
+                  {% if request.user.is_superuser %}
+                    <li class="list-inline-item mr-3">
+                    <a href="" class="dropdown-item">Order Management</a>
+                    </li>
+                  {% endif %}
+                    <li class="list-inline-item mr-3">
+                      <a href="{% url 'home' %}" class="nav-text">Home</a>
+                    </li>
+                    <li class="list-inline-item mr-3">
+                      <a href="" class="nav-text">Services</a>
+                    </li>
+                    <li class="list-inline-item mr-3">
+                      <a href="" class="nav-text">Case Studies</a>
+                    </li>
+                    <li class="list-inline-item mr-3">
+                      <a href="" class="nav-text">Profile</a>
+                    </li>
+                    <li class="list-inline-item mr-3">
+                      <a href="{% url 'account_logout' %}" class="nav-text">Sign Out</a>
+                    </li>
+                    <li class="list-inline-item mr-3">
+                      <a href="" class="nav-contact">Contact us</a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
+                          <div class="text-center">
+                              <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                              <p class="my-0">
+                                {% if grand_total %}
+                                    £{{ grand_total|floatformat:2 }}
+                                {% else %}
+                                    £0.00
+                                {% endif %}
+                              </p>
+                          </div>
+                      </a>
+                  </li>
+                {% else %}
+                  <li class="list-inline-item mr-3">
+                    <a href="{% url 'home' %}" class="nav-text">Home</a>
+                  </li>
+                  <li class="list-inline-item mr-2">
+                    <a href="" class="nav-text">Services</a>
+                  </li>
+                  <li class="list-inline-item mr-3">
+                    <a href="" class="nav-text">Case Studies</a>
+                  </li>
+                  <li class="list-inline-item mr-3">
+                    <a href="" class="nav-text">Profile</a>
+                  </li>
+                    <li class="list-inline-item mr-3">
+                      <a href="{% url 'account_login' %}" class="nav-text">Sign In</a>
+                    </li>
+                    <li class="list-inline-item mr-3">
+                      <a href="{% url 'account_signup' %}" class="nav-text">Register</a>
+                    </li>
+                    <li class="list-inline-item mr-3">
+                      <a href="" class="nav-contact">Contact us</a>
+                    </li>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </header>
 
       {% if messages %}
       <div class="messge-container"></div>
