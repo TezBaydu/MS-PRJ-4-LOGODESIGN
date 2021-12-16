@@ -1,0 +1,21 @@
+.home-hero-image {
+    background: url('/media/hero2.jpg') no-repeat bottom center fixed;
+    background-size: cover;
+    padding-top: 11em;
+}
+
+.carousel-control-next {
+    background-color: #000;
+}
+
+.carousel-control-prev {
+    background-color: #000;
+}
+
+.carousel {
+    text-align: -webkit-center;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.562);
+}
