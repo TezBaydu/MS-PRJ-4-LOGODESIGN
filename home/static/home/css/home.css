@@ -2,6 +2,7 @@
     background: url('/media/hero2.jpg') no-repeat bottom center fixed;
     background-size: cover;
     padding-top: 11em;
+    /* background-color: #000; */
 }
 
 .carousel-control-next {
