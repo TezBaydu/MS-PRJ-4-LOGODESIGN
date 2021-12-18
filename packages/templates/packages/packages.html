@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- {% block extra_css %}
+    <link rel="stylesheet" href="{% static 'projects/css/projects.css' %}">
+{% endblock %} -->
+
+{% block content %}
+
+    <div class="container pt-5">
+        
+    </div>
+    <div class="container pt-md-5">
+        <div class="row pt-5">
+            <div class="col text-center case pt-5">
+                <h1>Case Studies</h1>
+            </div>
+        </div>
+    </div>
+
+    <form method="GET" action="{% url 'projects' %}">
+        <div class="container col-8 offset-2 mb-5">
+            <div class="row pt-5">
+                <div class="col">
+                    <div class="list-group list-group-horizontal-md text-center" role="group">
+                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects' %}?company=austin_james" role="button" aria-pressed="true">
+                        Austin James
+                        </a>
+                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects' %}?company=baby_baby" role="button">Baby Baby</a>
+                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects' %}?company=button_queen" role="button">The Button Queen</a>
+                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects' %}?company=council_culture" role="button">Council Culture</a>
+                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects' %}?company=optimum_par" role="button">Optimum Par</a>
+                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects' %}?company=west_two_wine" role="button">West Two Wine</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+                <div class="col-9 col-md-5 col-xl-4 text-center mt-3">
+                    <img class="w-100" src="{{ company.logoimage.url }}">
+                    <hr class="w-50 mb-1">
+                </div>
+
+
+        </div>
+        <div class="row">
+            <div class="product-container col-8 offset-2">
+                <div class="row mt-1 mb-2"></div>
+                <div class="row justify-content-between">
+                    {% for project in projects %}
+                        <div class="col-md-6 col-lg-4 align-self-center">
+                            <div class="h-100 border-0">
+                                {% if project.image %}
+                                <img class="img-thumbnail" src="{{ project.image.url }}" data-toggle="tooltip" data-placement="top" title="{{ project.name }}" alt="{{ project.name }}">
+                                {% else %}
+                                <a href="">
+                                    <img class="img-thumbnail" src="{{ MEDIA_URL }}noimage.png" alt="{{ project.name }}">
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="row mt-5 mb-2"></div>
+                <div class="row" id="company-section">
+                        <div class="col-sm-10 col-xl-6">
+                        <h4 class="logo-font"><u>{{ company.friendly_name }}</u></h4>
+                        <p> {{ company.description }}</p>                        
+                        </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+    <div class="container my-5">
+        <div class="row text-center">
+            <div class="col">
+                <h5>Click <a href="">here</a> to see our packages</h5>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
