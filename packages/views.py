@@ -1,11 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Company, Project, Package
 
 
-def all_projects(request):
-    """ A view to show Case Studies including filtering """
+def projects_packages(request):
+    """ A view to show Case Studies including filtering and all packages """
 
     projects = Project.objects.all()
+    packages = Package.objects.all()
     companies = None
 
     if request.GET:
@@ -17,18 +18,19 @@ def all_projects(request):
     context = {
         'projects': projects,
         'company': company,
-    }
-
-    return render(request, 'packages/packages.html', context)
-
-
-def all_packages(request):
-    """ A view to show all packages """
-
-    packages = Package.objects.all()
-
-    context = {
         'packages': packages,
     }
 
     return render(request, 'packages/packages.html', context)
+
+
+def package_detail(request, package_id):
+    """ A view to show individual package details """
+
+    package = get_object_or_404(Package, pk=package_id)
+
+    context = {
+        'package': package,
+    }
+
+    return render(request, 'packages/checkout.html', context)

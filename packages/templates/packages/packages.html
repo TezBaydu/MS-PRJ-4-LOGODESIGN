@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-<!-- {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'projects/css/projects.css' %}">
-{% endblock %} -->
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'packages/css/packages.css' %}">
+{% endblock %}
 
 {% block content %}
 
@@ -18,19 +18,19 @@
         </div>
     </div>
 
-    <form method="GET" action="{% url 'projects' %}">
+    <form method="GET" action="{% url 'projects_packages' %}">
         <div class="container col-8 offset-2 mb-5">
             <div class="row pt-5">
                 <div class="col">
                     <div class="list-group list-group-horizontal-md text-center" role="group">
-                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects' %}?company=austin_james" role="button" aria-pressed="true">
+                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects_packages' %}?company=austin_james" role="button" aria-pressed="true">
                         Austin James
                         </a>
-                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects' %}?company=baby_baby" role="button">Baby Baby</a>
-                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects' %}?company=button_queen" role="button">The Button Queen</a>
-                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects' %}?company=council_culture" role="button">Council Culture</a>
-                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects' %}?company=optimum_par" role="button">Optimum Par</a>
-                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects' %}?company=west_two_wine" role="button">West Two Wine</a>
+                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects_packages' %}?company=baby_baby" role="button">Baby Baby</a>
+                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects_packages' %}?company=button_queen" role="button">The Button Queen</a>
+                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects_packages' %}?company=council_culture" role="button">Council Culture</a>
+                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects_packages' %}?company=optimum_par" role="button">Optimum Par</a>
+                        <a class="list-group-item list-group-item-action btn" href="{% url 'projects_packages' %}?company=west_two_wine" role="button">West Two Wine</a>
                     </div>
                 </div>
             </div>
@@ -76,11 +76,54 @@
     
     </div>
 
-    <div class="container my-5">
-        <div class="row text-center">
-            <div class="col">
-                <h5>Click <a href="">here</a> to see our packages</h5>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center my-5">
+                <h4 class="text-dark font-weight-semibold">Choose your package and make your purchase!</h4>
             </div>
+        </div>
+    </div>
+
+    
+    <div class="container text-white">
+        <div class="row justify-content-around my-5">
+            {% for package in packages %}
+                {% if package.name == "lite" %}
+                    <div class="card bg-grey px-1 pt-3 my-3 mx-3">
+                {% elif package.name == "plus" %}
+                    <div class="card bg-black px-1 pt-3 my-3 mx-3">
+                {% elif package.name == "premium" %}
+                    <div class="card bg-blue px-1 pt-3 my-3 mx-3">
+                {% endif %}
+                <div class="row">
+                    <div class="col-4">
+                        <img src="{{ package.image.url }}" class="card-img-top w-75 pt-1 mb-3" alt="Chess piece">
+                    </div>
+                    <div class="col-8">
+                        <h5 class="card-title mt-3 ml-n5">{{ package.friendly_name }}</h5>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-text font-weight-light mb-4">What You'll Get</h6>
+                    <ul class="pl-0">
+                        <li class="list-unstyled mb-2"><i class="fas fa-check-circle"></i>  {{ package.logo_count_request }} Custom-made Logo Designs</li>
+                        <li class="list-unstyled mb-2"><i class="fas fa-check-circle"></i>  {{ package.quality_request }}</li>
+                        <li class="list-unstyled mb-2"><i class="fas fa-check-circle"></i>  {{ package.support_request }}</li>
+                        <li class="list-unstyled mb-2"><i class="fas fa-check-circle"></i>  {{ package.production_days }} Days Production</li>
+                    </ul>
+                    <hr class="bg-white"/>
+                    <h6 class="my-3">£{{ package.price }}</h6>
+                    <div class="row justify-content-center">
+                        {% if user.is_authenticated %}
+                        <a href="" class="btn btn-orange w-100 rounded-0">Choose</a>
+                        {% else %}
+                        <a href="{% url 'account_login' %}" class="btn btn-orange w-100 rounded-0">Choose</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 
