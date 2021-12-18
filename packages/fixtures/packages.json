@@ -1,0 +1,17 @@
+[
+    {"pk": 1, "model": "packages.package", "fields": {"sku": "package1", "name": "lite", "friendly_name": "Lite",
+        "logo_count_request": 2, "quality_request": "Downloadable High Quality content",
+        "support_request": "Dedicated customer support", "production_days": 5,
+        "price": 500.00, "image": "knight.png"}},
+
+    {"pk": 2, "model": "packages.package", "fields": {"sku": "package2", "name": "plus", "friendly_name": "Plus",
+        "logo_count_request": 4, "quality_request": "Downloadable High Quality content",
+        "support_request": "Dedicated customer support", "production_days": 7,
+        "price": 700.00, "image": "queen.png"}},
+    
+    {"pk": 3, "model": "packages.package", "fields": {"sku": "package3", "name": "premium", "friendly_name": "Premium",
+        "logo_count_request": 8, "quality_request": "Downloadable High Quality content",
+        "support_request": "Dedicated customer support", "production_days": 9,
+        "price": 950.00, "image": "king.png"}}
+]
+

@@ -1,0 +1,44 @@
+[
+    {"pk": 1, "model": "packages.project", "fields": {"sku": "aj1.1", "company": 1, "name": "Austin James office decor", "image": "aj-5.jpg"}}, 
+    {"pk": 2, "model": "packages.project", "fields": {"sku": "aj1.2", "company": 1, "name": "Austin James Web application", "image": "aj-8.jpg"}}, 
+    {"pk": 3, "model": "packages.project", "fields": {"sku": "aj1.3", "company": 1, "name": "Austin James events boards", "image": "aj-9.jpg"}}, 
+    {"pk": 4, "model": "packages.project", "fields": {"sku": "aj1.4", "company": 1, "name": "Austin James brochure sets", "image": "aj-10.jpg"}}, 
+    {"pk": 5, "model": "packages.project", "fields": {"sku": "aj1.5", "company": 1, "name": "Austn James fuller  office decor", "image": "aj-11.jpg"}}, 
+    {"pk": 6, "model": "packages.project", "fields": {"sku": "aj1.6", "company": 1, "name": "Austin James stationary", "image": "aj-12.jpg"}}, 
+
+    {"pk": 7, "model": "packages.project", "fields": {"sku": "bb1.1", "company": 2, "name": "Baby Baby brochure", "image": "bb-2.jpg"}}, 
+    {"pk": 8, "model": "packages.project", "fields": {"sku": "bb1.2", "company": 2, "name": "Baby Baby shop front", "image": "bb-3.jpg"}}, 
+    {"pk": 9, "model": "packages.project", "fields": {"sku": "bb1.3", "company": 2, "name": "Baby Baby rug", "image": "bb-4.jpg"}}, 
+    {"pk": 10, "model": "packages.project", "fields": {"sku": "bb1.4", "company": 2, "name": "Baby Baby stationary", "image": "bb-5.jpg"}}, 
+    {"pk": 11, "model": "packages.project", "fields": {"sku": "bb1.5", "company": 2, "name": "Baby Baby price tag", "image": "bb-6.jpg"}}, 
+    {"pk": 12, "model": "packages.project", "fields": {"sku": "bb1.6", "company": 2, "name": "Baby Baby Web application","image": "bb-7.jpg"}},
+
+    {"pk": 13, "model": "packages.project", "fields": {"sku": "bq1.1", "company": 3, "name": "The Button Queen brochure", "image": "bq-2.jpg"}}, 
+    {"pk": 14, "model": "packages.project", "fields": {"sku": "bq1.2", "company": 3, "name": "The Button Queen satchel engraving", "image": "bq-8.jpg"}}, 
+    {"pk": 15, "model": "packages.project", "fields": {"sku": "bq1.3", "company": 3, "name": "The Button Queen stationary", "image": "bq-10.jpg"}}, 
+    {"pk": 16, "model": "packages.project", "fields": {"sku": "bq1.4", "company": 3, "name": "The Button Queen drink mug", "image": "bq-11.jpg"}}, 
+    {"pk": 17, "model": "packages.project", "fields": {"sku": "bq1.5", "company": 3, "name": "The Button Queen Web application", "image": "bq-14.jpg"}}, 
+    {"pk": 18, "model": "packages.project", "fields": {"sku": "bq1.6", "company": 3, "name": "The Button Queen shop front", "image": "bq-15.jpg"}}, 
+
+    {"pk": 19, "model": "packages.project", "fields": {"sku": "cc1.1", "company": 4, "name": "Council Culture vinyl cover", "image": "cc-3.jpg"}}, 
+    {"pk": 20, "model": "packages.project", "fields": {"sku": "cc1.2", "company": 4, "name": "Council Culture drink mug", "image": "cc-4.jpg"}}, 
+    {"pk": 21, "model": "packages.project", "fields": {"sku": "cc1.3", "company": 4, "name": "Council Culture clothes", "image": "cc-5.jpg"}}, 
+    {"pk": 22, "model": "packages.project", "fields": {"sku": "cc1.4", "company": 4, "name": "Council Culture clothes", "image": "cc-6.jpg"}}, 
+    {"pk": 23, "model": "packages.project", "fields": {"sku": "cc1.5", "company": 4, "name": "Council Culture Web application", "image": "cc-7.jpg"}}, 
+    {"pk": 24, "model": "packages.project", "fields": {"sku": "cc1.6", "company": 4, "name": "Council Culture cd cover", "image": "cc-9.jpg"}}, 
+
+    {"pk": 25, "model": "packages.project", "fields": {"sku": "op1.1", "company": 5, "name": "Optimum Par business cards", "image": "op-3.jpg"}}, 
+    {"pk": 26, "model": "packages.project", "fields": {"sku": "op1.2", "company": 5, "name": "Optimum Par stationary", "image": "op-4.jpg"}}, 
+    {"pk": 27, "model": "packages.project", "fields": {"sku": "op1.3", "company": 5, "name": "Optimum Par Web application", "image": "op-6.jpg"}}, 
+    {"pk": 28, "model": "packages.project", "fields": {"sku": "op1.4", "company": 5, "name": "Optimum Par office decor", "image": "op-7.jpg"}}, 
+    {"pk": 29, "model": "packages.project", "fields": {"sku": "op1.5", "company": 5, "name": "Optimum Par brochure", "image": "op-8.jpg"}}, 
+    {"pk": 30, "model": "packages.project", "fields": {"sku": "op1.6", "company": 5, "name": "Optimum Par office front", "image": "op-9.jpg"}},
+
+    {"pk": 31, "model": "packages.project", "fields": {"sku": "ww1.1", "company": 6, "name": "West Two Wine bottle label", "image": "ww-4.jpg"}}, 
+    {"pk": 32, "model": "packages.project", "fields": {"sku": "ww1.2", "company": 6, "name": "West Two Wine shop front", "image": "ww-5.jpg"}}, 
+    {"pk": 33, "model": "packages.project", "fields": {"sku": "ww1.3", "company": 6, "name": "West Two Wine stationary", "image": "ww-7.jpg"}}, 
+    {"pk": 34, "model": "packages.project", "fields": {"sku": "ww1.4", "company": 6, "name": "West Two Wine brochure", "image": "ww-12.jpg"}}, 
+    {"pk": 35, "model": "packages.project", "fields": {"sku": "ww1.5", "company": 6, "name": "West Two Wine Web application", "image": "ww-14.jpg"}}, 
+    {"pk": 36, "model": "packages.project", "fields": {"sku": "ww1.6", "company": 6, "name": "West Two Wine signboard", "image": "ww-15.jpg"}}
+
+]
