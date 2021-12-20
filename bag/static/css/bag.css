@@ -1,0 +1,6 @@
+.bag-hero-image {
+    background: url('/media/pay-lightbulb.jpg') no-repeat center top fixed;
+    background-size: contain;
+    padding-top: 11em;
+    height: 75%;
+}

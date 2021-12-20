@@ -103,6 +103,23 @@ body {
     color: white !important;
 }
 
+/*-- Consistent package format --*/
+
+.bg-grey {
+    background-color: #668586 !important;
+    width: 20rem;
+}
+
+.bg-black {
+    background-color: #000 !important;
+    width: 20rem;
+}
+
+.bg-blue {
+    background-color: #252060 !important;
+    width: 20rem;
+}
+
 
 /* -- Media Queries --*/
   
