@@ -1,0 +1,11 @@
+.package-hero-image {
+    background: url('/media/form-think.jpg') no-repeat top center fixed;
+    background-size: cover;
+    padding-top: 11em;
+}
+
+@media (min-width: 767px) {
+    .package-hero-image {
+        height: 75%;
+    }
+}

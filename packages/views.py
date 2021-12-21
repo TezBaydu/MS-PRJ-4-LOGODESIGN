@@ -33,4 +33,4 @@ def package_detail(request, package_id):
         'package': package,
     }
 
-    return render(request, 'packages/checkout.html', context)
+    return render(request, 'packages/package_detail.html', context)
