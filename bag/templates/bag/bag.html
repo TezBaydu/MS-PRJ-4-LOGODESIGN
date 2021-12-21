@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'bag/css/bag.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container bag-hero-image">
+    <div class="row">
+        <div class="col-12 col-md-6 my-auto text-center">
+            <h2 class="text-light font-weight-bold mt-5">This is Your Bag</h2>
+        </div>
+    </div>
+</div>
+
+    <div class="container mb-2">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="logo-font mb-4">Logo Requests</h2>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                {% if bag_items %}
+                    <div class="table-responsive-sm rounded">
+                        <table class="table table-sm table-borderless">
+                            <thead class="text-black">
+                                <tr>
+                                    <th scope="col">Package Info</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in bag_items %}
+                                <form class="form update-form" method="POST" action="">
+                                    {% csrf_token %}
+                                    <tr class="mobile-bag-grid">
+                                        <td colspan="1" class="py-3">
+                                            <p class="my-0"><strong>Item ID: {{ item.item_id }}</strong></p>
+                                        <td colspan="1" class="w-25">
+                                            {% if item.package.name == "lite" %}
+                                                <div class="card bg-grey text-white">
+                                            {% elif item.package.name == "plus" %}
+                                                <div class="card bg-black text-white">
+                                            {% elif item.package.name == "premium" %}
+                                                <div class="card bg-blue text-white">
+                                            {% endif %}
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <img src="{{ item.package.image.url }}" class="card-img-top w-75 pt-1 mb-3" alt="Chess piece">
+                                                </div>
+                                                <div class="col-5">
+                                                    <h5 class="card-title mt-3 ml-n4">{{ item.package.friendly_name }}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h6 class="card-text font-weight-light mb-4">What You'll Get</h6>
+                                                <ul class="pl-0">
+                                                    <li class="list-unstyled mb-2"><i class="fas fa-check-circle"></i>  {{ item.package.logo_count_request }} Custom-made Logo Designs</li>
+                                                    <li class="list-unstyled mb-2"><i class="fas fa-check-circle"></i>  {{ item.package.quality_request }}</li>
+                                                    <li class="list-unstyled mb-2"><i class="fas fa-check-circle"></i>  {{ item.package.support_request }}</li>
+                                                    <li class="list-unstyled mb-2"><i class="fas fa-check-circle"></i>  {{ item.package.production_days }} Days Production</li>
+                                                </ul>
+                                                <hr class="bg-white"/>
+                                                <h6 class="my-3">£{{ item.package.price }}</h6>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </form>
+                                    <tr>
+                                        <td class="pt-5 text-center">
+                                            <a class="update-link text-info px-5">Update Details</a>
+                                            <a class="remove-item text-danger px-5" id="remove_{{ item.item_id }}">Remove</a>
+                                        </td>
+                                    </tr>
+                                
+                                {% endfor %}
+                                <tr class="mobile-bag-grid">
+                                    <td colspan="2" class="pt-5 text-center">
+                                        <h5 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h5>
+                                    </td>
+                                </tr>
+                                <tr class="mobile-bag-grid">
+                                    <td colspan="2" class="text-center">
+                                        <a href="" class="btn btn-outline-black rounded-0">
+                                            <span class="icon">
+                                                <i class="fas fa-chevron-left"></i>
+                                            </span>
+                                            <span class="text-uppercase">Review Case Studies</span>
+                                        </a>
+                                        <a href="{% url 'checkout' %}" class="btn btn-black rounded-0">
+                                            <span class="text-uppercase">Secure Checkout</span>
+                                            <span class="icon">
+                                                <i class="fas fa-lock"></i>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="lead mb-5">You have no stored requests.</p>
+                    <a href="" class="btn btn-outline-black rounded-0 btn-lg">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase">Choose a package</span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+.bag-hero-image {
+    background: url('/media/pay-lightbulb.jpg') no-repeat center top fixed;
+    background-size: contain;
+    padding-top: 11em;
+    height: 75%;
+}
+
+.mobile-bag-grid {
+    display: inherit;
+}
+
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
+
+.bag-desc {
+    height: calc(3.5em + 0.75rem + 2px);
+}
+
+@media (max-width: 767px) {
+    .mobile-bag-grid {
+        display: grid;
+    }
+
+    .mobile-bag-grid .bg-grey {
+        width: 17rem;
+    }
+
+    .mobile-bag-grid .bg-black {
+        width: 17rem;
+    }
+
+    .mobile-bag-grid .bg-blue {
+        width: 17rem;
+    }
+
+    .bag-hero-image {
+        height: 55%;
+    }
+}
