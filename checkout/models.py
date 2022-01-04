@@ -23,6 +23,11 @@ class Order(models.Model):
         max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)
+    company_name = models.CharField(max_length=100, null=False, blank=False, default='Company Name')
+    company_slogan = models.CharField(max_length=200, null=False, blank=False, default='Company Slogan')
+    company_description = models.CharField(max_length=500, null=False, blank=False, default='Company Description')
+    company_colors = models.CharField(max_length=100, null=False, blank=False, default="Company Colours")
+    company_look = models.CharField(max_length=100, null=False, blank=False, default='Company Look')
 
     def _generate_order_number(self):
         """
@@ -63,16 +68,6 @@ class OrderLineItem(models.Model):
     lineitem_total = models.DecimalField(
         max_digits=6, decimal_places=2,
         null=False, blank=False, editable=False)
-    company_name = models.CharField(
-        max_length=100, null=False, blank=False, default=0)
-    company_slogan = models.CharField(
-        max_length=200, null=False, blank=False, default=0)
-    company_description = models.CharField(
-        max_length=500, null=False, blank=False, default=0)
-    company_colors = models.CharField(
-        max_length=100, null=False, blank=False, default=0)
-    company_look = models.CharField(
-        max_length=100, null=False, blank=False, default=0)
 
     def save(self, *args, **kwargs):
         """

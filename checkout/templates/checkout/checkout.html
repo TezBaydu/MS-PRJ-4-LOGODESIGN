@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="container bag-hero-image">
+        <div class="row">
+            <div class="col-12 col-md-6 my-auto text-center">
+                <h2 class="text-light font-weight-bold mt-5">This is Your Bag</h2>
+                <p class="text-light my-5">Safe and Secure Payment</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            {% for item in bag_items %}
+                    <div class="col-sm-8 col-md-6 mb-1">
+                        <tr class="mobile-bag-grid">
+                            <td colspan="1" class="py-3">
+                                <p class="my-0"><strong>Item ID: {{ item.item_id }}</strong></p>
+                                <p class="my-1 text-muted">Company Name:<br> <span class="text-black">{{ item.company_name|upper }}</span></p>
+                                <p class="my-1 text-muted">Company Slogan or Strapline:<br> <span class="text-black"> {{ item.company_slogan|upper }}</span></p>
+                                <p class="my-1 text-muted">Company Description:<br> <span class="text-black"> {{ item.company_description|upper }}</span></p>
+                                <p class="my-1 text-muted">Logo Colours:<br> <span class="text-black"> {{ item.company_colors|upper }}</span></p>
+                                <p class="my-1 text-muted">Logo Look and Feel:<br> <span class="text-black"> {{ item.company_look|upper }}</span></p>
+                            </td>
+
+                            <td colspan="1" class="w-25">
+                                    {% if item.package.name == "lite" %}
+                                        <div class="card bg-grey text-white">
+                                    {% elif item.package.name == "plus" %}
+                                        <div class="card bg-black text-white">
+                                    {% elif item.package.name == "premium" %}
+                                        <div class="card bg-blue text-white">
+                                    {% endif %}
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <img src="{{ item.package.image.url }}" class="card-img-top w-75 pt-1 mb-3" alt="Chess piece">
+                                        </div>
+                                        <div class="col-5">
+                                            <h5 class="card-title mt-3 ml-n4">{{ item.package.friendly_name }}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h6 class="card-text font-weight-light mb-4">What You'll Get</h6>
+                                        <ul class="pl-0">
+                                            <li class="list-unstyled mb-2"><i class="fas fa-check-circle"></i>  {{ item.package.logo_count_request }} Custom-made Logo Designs</li>
+                                            <li class="list-unstyled mb-2"><i class="fas fa-check-circle"></i>  {{ item.package.quality_request }}</li>
+                                            <li class="list-unstyled mb-2"><i class="fas fa-check-circle"></i>  {{ item.package.support_request }}</li>
+                                            <li class="list-unstyled mb-2"><i class="fas fa-check-circle"></i>  {{ item.package.production_days }} Days Production</li>
+                                        </ul>
+                                        <hr class="bg-white"/>
+                                        <h6 class="my-3">£{{ item.package.price }}</h6>
+                                    </div>
+                            </td>
+                        </tr>
+                    </div>
+            {% endfor %}
+                <hr class="my-2">
+                <div class="row text-black text-right mt-3">
+                    <div class="col-7 offest-2">
+                        <p class="my-0">Order Total:</p>
+                        <p class="my-0">Grand Total:</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="my-0">£{{ total | floatformat:2 }}</p>
+                        <p class="my-0">£{{ grand_total | floatformat:2 }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-8 col-md-4">
+                <p class="text-muted">Please fill out the form below to complete your order</p>
+                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                    {% csrf_token %}
+                    <fieldset class="rounder px-3 mb-5">
+                        <legend class="fieldset-label regular text-black px-2 w-auto">Logo Request Details</legend>
+                        {{ order_form.company_name | as_crispy_field }}
+                        {{ order_form.company_slogan | as_crispy_field }}
+                        {{ order_form.company_description | as_crispy_field }}
+                        {{ order_form.company_colors | as_crispy_field }}
+                        {{ order_form.company_look | as_crispy_field }}
+                    </fieldset>
+                    <fieldset class="rounder px-3 mb-5">
+                        <legend class="fieldset-label regular text-black px-2 w-auto">Contact Details</legend>
+                        {{ order_form.full_name | as_crispy_field }}
+                        {{ order_form.email | as_crispy_field }}
+                        {{ order_form.phone_number | as_crispy_field }}
+                    </fieldset>
+                    <fieldset class="rounder px-3 mb-5">
+                        <legend class="fieldset-label regular text-black px-2 w-auto">Address</legend>
+                        {{ order_form.country | as_crispy_field }}
+                        {{ order_form.postcode | as_crispy_field }}
+                        {{ order_form.town_or_city | as_crispy_field }}
+                        {{ order_form.street_address1 | as_crispy_field }}
+                        {{ order_form.street_address2 | as_crispy_field }}
+                        {{ order_form.county | as_crispy_field }}
+                        <div class="form-check form-check-inline float-right mr-0">
+                            {% if user.is_authenticated %}
+                                <label class="form-check-label" for="id-save-info">Save Address details to Profile?</label>
+                                <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="id-save-info" checked>
+                            {% else %}
+                                <label class="form-check-label" for="id-save-info">
+                                    <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
+                                    <a class="text-info" href="{% url 'account_login' %}">Login</a> to save this information
+                                </label>
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    <fieldset class="rounder px-0 mb-5">
+                        <legend class="fieldset-label regular text-black px-2 w-auto">Payment</legend>
+                        <div class="mb-3" id="card-element"></div>
+                        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                    </fieldset>
+
+                    <div class="submit-button text-right mt-5 mb-2">
+                        <a href="{% url 'projects_packages' %}?company=austin_james" class="btn btn-outline-black rounded-0">
+                            <span class="icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="font-weight-bold">Add a Different Package</span>
+                        </a>
+                        <button id="submit-button" class="btn btn-black rounded-0">
+                            <span class="font-weight-bold">Complete Order</span>
+                            <span class="icon">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </button>
+                        <p class="small text-danger my-0">
+                            <span class="icon">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </span>
+                            <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

@@ -24,7 +24,7 @@ def bag_contents(request):
             'package.production_days': package.production_days,
         })
 
-    grand_total = package.price
+    # grand_total += package.price
 
     context = {
         'bag_items': bag_items,
