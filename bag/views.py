@@ -10,11 +10,12 @@ def view_bag(request):
 
 
 def add_to_bag(request, item_id):
-    """ To add package to the bage """
+    """ To add package to the bag """
 
     package = get_object_or_404(Package, pk=item_id)
-    # package_add = request.POST.get('package_add')
-    redirect_url = request.POST.get('redirect_url')
+    # package = request.POST.get('package')
+    # quantity = request.POST.get('quantity')
+    # redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
 
     if not bag.keys():
@@ -28,6 +29,13 @@ def add_to_bag(request, item_id):
                       proceed to purchase. ")
         return redirect('view_bag')
 
+    # if item_id in list(bag.keys()):
+    #     bag[item_id] += quantity
+    #     messages.success(
+    #         request, f'Added {package.friendly_name} Logo Package to your bag')
+    # else:
+    #     bag[item_id] = quantity
+
     request.session['bag'] = bag
     print(request.session['bag'])
-    return redirect(redirect_url)
+    return redirect('view_bag')

@@ -57,11 +57,16 @@
     </div>
 </div>
 <div class="container mb-5">
-    <form class="form" action="{% url 'add_to_bag' package.id %}" method="POST">
+    <form class="form" action="" method="POST">
         {% csrf_token %}
         <div class="form-row">
+            <!-- <div class="form-group w-50">
+                <div class="input-group">
+                    <input class="form-control qty_imput" type="number" name="quantity" value="1" data-item_id="{{ package.id }}" id="id_qty_{{ package.id }}">
+                </div>
+            </div> -->
             <div class="col-12 text-center">
-                <input type="submit" class="btn btn-black text-uppercase mt-5 rounded-0" value="Add to Bag">
+                <input type="submit" class="btn btn-black text-uppercase mt-5 rounded-0" value="Add and go to Checkout">
             </div>
             <div class="col-12">
                 <a href="{% url 'projects_packages' %}?company=austin_james" class="btn btn-outline-black mt-5">
@@ -71,7 +76,7 @@
                     <span class="text-uppercase">Add a different Package</span>
                 </a>
             </div>
-            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+            <!-- <input type="hidden" name="redirect_url" value="{{ request.path }}"> -->
         </div>
     </form>
 </div>

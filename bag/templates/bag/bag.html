@@ -15,6 +15,8 @@
     </div>
 </div>
 
+
+
     <div class="container mb-2">
         <div class="row">
             <div class="col">
@@ -93,7 +95,7 @@
                                             </span>
                                             <span class="text-uppercase">Review Case Studies</span>
                                         </a>
-                                        <a href="{% url 'checkout' %}" class="btn btn-black rounded-0">
+                                        <a href="" class="btn btn-black rounded-0">
                                             <span class="text-uppercase">Secure Checkout</span>
                                             <span class="icon">
                                                 <i class="fas fa-lock"></i>
@@ -106,7 +108,7 @@
                     </div>
                 {% else %}
                     <p class="lead mb-5">You have no stored requests.</p>
-                    <a href="" class="btn btn-outline-black rounded-0 btn-lg">
+                    <a href="{% url 'projects_packages' %}?company=austin_james" class="btn btn-outline-black rounded-0 btn-lg">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>

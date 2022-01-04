@@ -31,8 +31,8 @@ class Project(models.Model):
 
 class Package(models.Model):
 
-    name = models.CharField(max_length=254)
     sku = models.CharField(max_length=254, null=True, blank=True)
+    name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
     logo_count_request = models.IntegerField()
     quality_request = models.TextField(null=True, blank=True)
